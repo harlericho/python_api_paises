@@ -44,11 +44,11 @@ def post():
             nombre = json['nombre']
             continente = json['continente']
         if paises.unicoNombreG(query,nombre):
-            return jsonify({'data': 'Nombre ya esta registrado en la base de datos'})
+            return jsonify({'nombre': 'Nombre ya esta registrado en la base de datos'})
         else:
             data = paises.guardarDatos(query,nombre,continente)
             if data[0]=='nombre':
-                return jsonify({'data': data[1]})
+                return jsonify({'nombre': data[1]})
             else:
                 return jsonify({'data': data})
     except Exception as e:
@@ -63,11 +63,11 @@ def put(id):
             continente = json['continente']
         fila = paises.unicoNombreU(query,nombre,id)
         if fila >= 2:
-            return jsonify({'data': 'Nombre ya esta registrado en la base de datos'})
+            return jsonify({'nombre': 'Nombre ya esta registrado en la base de datos'})
         else:
             data = paises.actualizarDatos(query,nombre,continente,id)
             if data[0]=='nombre':
-                return jsonify({'data': data[1]})
+                return jsonify({'nombre': data[1]})
             else:
                 return jsonify({'data': data})
     except Exception as e:
